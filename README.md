@@ -1,315 +1,167 @@
 # Enterprise Multi-Cloud Platform Engineering
 
-**A production-inspired Platform Engineering implementation using Terraform, Microsoft Azure, Amazon Web Services (AWS), Kubernetes, GitHub Actions and GitOps.**
-
-![Platform Engineering](https://img.shields.io/badge/Platform-Engineering-blue)
-![Terraform](https://img.shields.io/badge/IaC-Terraform-623CE4)
-![Azure](https://img.shields.io/badge/Cloud-Azure-0078D4)
-![AWS](https://img.shields.io/badge/Cloud-AWS-FF9900)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5)
-![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF)
-![GitOps](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D)
+> Production-inspired Platform Engineering using **Terraform**, **Microsoft Azure**, **Amazon Web Services (AWS)**, **Kubernetes**, **GitHub Actions**, and **GitOps**.
 
 ---
 
-# Project Overview
+## Vision
 
-Modern Platform Engineering extends far beyond provisioning cloud infrastructure.
+This repository demonstrates how a modern Platform Engineering team can design, provision, automate, secure, and operate a reusable cloud platform across multiple cloud providers.
 
-Organizations require reusable infrastructure, GitOps workflows, automated CI/CD pipelines, secure secrets management, observability, disaster recovery strategies, and production-ready Kubernetes platforms that can operate consistently across multiple cloud providers.
+The objective is not simply to provision infrastructure, but to apply enterprise engineering practices including:
 
-This repository demonstrates how an enterprise Platform Engineering team can design and implement a reusable, scalable, and production-inspired platform across **Microsoft Azure** and **Amazon Web Services (AWS)** using Infrastructure as Code.
-
-The implementation follows enterprise engineering principles including modular design, reusable Terraform modules, GitOps, automation, standardized deployments, documentation, and Infrastructure as Code best practices.
+- Infrastructure as Code (IaC)
+- Reusable Terraform modules
+- GitOps workflows
+- CI/CD automation
+- Secure secrets management
+- Kubernetes platform engineering
+- Observability
+- Disaster recovery
+- Production-ready architecture
 
 ---
 
-# Project Objectives
+## Architecture Overview
 
-This project aims to build a complete Platform Engineering ecosystem capable of supporting modern cloud-native workloads.
+```text
+                   GitHub
 
-## Infrastructure
+                      │
 
-- Microsoft Azure
-- Amazon Web Services (AWS)
-- Multi-Cloud Architecture
-- Enterprise Networking
-- Terraform Remote State
+             GitHub Actions
 
-## Kubernetes
+                      │
 
-- Azure Kubernetes Service (AKS)
-- Amazon Elastic Kubernetes Service (EKS)
-- Multi-Cluster Management
+                 Terraform
 
-## Infrastructure as Code
+        ┌────────────┴────────────┐
 
-- Terraform Modules
-- Reusable Components
-- Environment Separation
-- Remote Backend
+        │                         │
 
-## CI/CD
+ Microsoft Azure            Amazon AWS
 
-- GitHub Actions
-- Automated Terraform Validation
-- Automated Deployment Pipelines
+        │                         │
 
-## GitOps
+      AKS                        EKS
 
-- ArgoCD
-- Helm
-- Application Delivery
+        │                         │
 
-## Security
+     ArgoCD                    ArgoCD
 
-- Azure Key Vault
-- AWS Secrets Manager
-- HashiCorp Vault
-- RBAC
-- Workload Identity
+        │                         │
 
-## Observability
+ Enterprise Apps         Enterprise Apps
 
-- Prometheus
-- Grafana
-- Loki
-- Alertmanager
+        │                         │
 
-
-# High Level Architecture
-
-                             GitHub
-
-                                │
-
-                     GitHub Actions CI/CD
-
-                                │
-
-                           Terraform
-
-             ┌──────────────────┴──────────────────┐
-
-             │                                     │
-
-      Microsoft Azure                     Amazon AWS
-
-             │                                     │
-
-        Azure Network                        AWS VPC
-
-             │                                     │
-
-            AKS                                   EKS
-
-             │                                     │
-
-           ArgoCD                               ArgoCD
-
-             │                                     │
-
-      Enterprise Applications            Enterprise Applications
-
-             │                                     │
-
-      Prometheus / Grafana            Prometheus / Grafana
-
-
-# Repository Structure
-
-```
-enterprise-platform-terraform/
-
-│
-
-├── terraform/
-│
-│   ├── live/
-│   │
-│   │   ├── 00-bootstrap
-│   │   ├── 10-network
-│   │   ├── 20-container-registry
-│   │   ├── 30-kubernetes
-│   │   ├── 40-security
-│   │   ├── 50-observability
-│   │   ├── 60-gitops
-│   │   ├── 70-platform-services
-│   │   ├── 80-shared-services
-│   │   └── 90-disaster-recovery
-│
-│   ├── modules/
-│   │
-│   │   ├── azure/
-│   │   ├── aws/
-│   │   └── shared/
-│
-│   ├── scripts/
-│   ├── docs/
-│   └── tests/
-│
-├── README.md
-├── ROADMAP.md
-└── LICENSE
-
+ Prometheus/Grafana    Prometheus/Grafana
 ```
 
 ---
 
-# Technology Stack
+## Technology Stack
 
-| Category | Technologies |
-|-----------|--------------|
+| Area | Technologies |
+|------|--------------|
 | Cloud | Microsoft Azure, AWS |
-| Infrastructure as Code | Terraform |
+| IaC | Terraform |
 | Containers | Docker |
 | Kubernetes | AKS, EKS |
 | GitOps | ArgoCD |
 | CI/CD | GitHub Actions |
 | Monitoring | Prometheus, Grafana |
-| Secrets Management | Azure Key Vault, AWS Secrets Manager, HashiCorp Vault |
-| Service Mesh | Istio |
-| Operating Systems | Ubuntu, RHEL |
-| Languages | HCL, Bash, YAML, Python |
-
-# Engineering Principles
-
-The platform is designed around the following engineering principles.
-
-- Modular Terraform Architecture
-- Reusable Infrastructure Components
-- Multi-Cloud Support
-- GitOps Driven Deployments
-- Infrastructure as Code
-- Immutable Infrastructure
-- Environment Isolation
-- Standardized Naming Conventions
-- Least Privilege Security
-- Production Inspired Architecture
-- Comprehensive Documentation
-
-# Project Roadmap
-
-| Sprint | Status |
-|----------|---------|
-| Sprint 1 – Foundation & Bootstrap | Completed |
-| Sprint 2 – Enterprise Networking | In Progress |
-| Sprint 3 – Azure Kubernetes Service (AKS) | Planned |
-| Sprint 4 – Amazon Elastic Kubernetes Service (EKS) | Planned |
-| Sprint 5 – GitHub Actions CI/CD | Planned |
-| Sprint 6 – GitOps with ArgoCD | Planned |
-| Sprint 7 – Platform Services | Planned |
-| Sprint 8 – Observability | Planned |
-| Sprint 9 – Security & Secrets Management | Planned |
-| Sprint 10 – Disaster Recovery | Planned |
-| Sprint 11 – Production Hardening | Planned |
-
-# Current Features
-
-- Terraform Bootstrap
-- Remote Terraform State
-- Azure Authentication
-- AWS Authentication
-- Enterprise Repository Structure
-- Multi-Cloud Architecture
-- Reusable Module Design
-
-# Future Enhancements
-
-- Azure Landing Zone
-- AWS Landing Zone
-- Cross-Cloud Networking
-- Private AKS
-- Private EKS
-- Istio Service Mesh
-- External Secrets Operator
-- Policy as Code
-- FinOps Dashboard
-- Chaos Engineering
-- Multi-Region Deployment
-- Blue/Green Kubernetes Deployments
-
-# Learning Outcomes
-
-This repository demonstrates practical implementation of:
-
-- Platform Engineering
-- Enterprise Terraform
-- Infrastructure as Code
-- Multi-Cloud Architecture
-- Kubernetes Platform Design
-- GitOps
-- CI/CD Automation
-- Cloud Networking
-- Enterprise Security
-- Observability
-- Disaster Recovery
-- Production Engineering Practices
+| Secrets | Azure Key Vault, AWS Secrets Manager, Vault |
+| Languages | HCL, Bash, Python, YAML |
 
 ---
 
-# Sprint Journal
+## Repository Structure
 
-## Sprint 1 — Platform Foundation
+```text
+terraform/
 
-### Objective
+├── live/
+├── modules/
+├── docs/
+├── scripts/
+└── tests/
+```
 
-Establish the engineering foundation required to build an enterprise-grade multi-cloud platform.
+- **live/** – Environment-specific deployments.
+- **modules/** – Reusable Terraform modules.
+- **docs/** – Architecture, ADRs, runbooks, and troubleshooting guides.
+- **scripts/** – Helper automation.
+- **tests/** – Validation and testing.
 
-### Achievements
+---
 
-- Repository initialization
-- Terraform installation
-- Azure CLI configuration
-- AWS CLI configuration
-- GitHub CLI authentication
-- Terraform backend preparation
+## Sprint Progress
+
+| Sprint | Status |
+|---------|--------|
+| Sprint 1 – Foundation | ✅ Completed |
+| Sprint 2 – Networking | 🚧 In Progress |
+| Sprint 3 – AKS | ⬜ Planned |
+| Sprint 4 – EKS | ⬜ Planned |
+| Sprint 5 – GitHub Actions | ⬜ Planned |
+| Sprint 6 – GitOps | ⬜ Planned |
+| Sprint 7 – Observability | ⬜ Planned |
+| Sprint 8 – Security | ⬜ Planned |
+| Sprint 9 – Disaster Recovery | ⬜ Planned |
+| Sprint 10 – Production Hardening | ⬜ Planned |
+
+---
+
+## Current Features
+
 - Enterprise repository structure
-- Multi-cloud project layout
+- Multi-cloud architecture
+- Azure & AWS authentication
+- Remote Terraform backend
+- Modular Terraform layout
 
-### Outcome
+---
 
-A reusable repository structure capable of supporting enterprise Platform Engineering implementations across Azure and AWS.
+## Documentation
 
-## Sprint 2 — Enterprise Networking
+- [Architecture](terraform/docs/architecture/)
+- [Architecture Decision Records](terraform/docs/adr/)
+- [Runbooks](terraform/docs/runbooks/)
+- [Troubleshooting](terraform/docs/troubleshooting/)
+- [Roadmap](ROADMAP.md)
 
-Currently In Progress
+---
 
-Focus Areas
+## Engineering Principles
 
-- Azure Networking Module
-- AWS Networking Module
-- Environment Separation
-- Terraform Module Development
-- Enterprise Networking Standards
+- Modular Infrastructure as Code
+- Reusable Terraform Modules
+- Multi-Cloud by Design
+- GitOps-Driven Delivery
+- Environment Isolation
+- Infrastructure Automation
+- Secure by Default
+- Documentation First
 
-# Why This Project?
+---
 
-Most public Terraform repositories focus on provisioning isolated cloud resources.
+## Why This Project?
 
-This project focuses on **building a reusable Platform Engineering ecosystem** inspired by real enterprise environments.
+Most Terraform repositories demonstrate how to deploy individual resources.
 
-The goal is not only to deploy infrastructure, but also to demonstrate engineering practices such as modular design, GitOps, automation, documentation, observability, security, and production-ready cloud architecture.
+This project demonstrates how to build and evolve an enterprise-style Platform Engineering ecosystem with reusable infrastructure, automation, documentation, and operational practices.
 
-# Contributing
+---
 
-Contributions, suggestions, and constructive feedback are welcome.
+## Project Status
 
-If you identify improvements or discover issues, feel free to open an issue or submit a pull request.
+🚧 **Active Development**
 
-# License
+New functionality is implemented sprint-by-sprint following feature branches, peer-review style commits, and documented design decisions.
 
-This project is licensed under the MIT License.
+---
 
-# Author
+## License
 
-**Sundeep Kumar**
-
-Platform Engineer | DevOps Engineer
-
-GitHub
-
-https://github.com/ashoksundeep
-
-
-> **"Automate Everything. Document Everything. Improve Continuously."**
+MIT License
