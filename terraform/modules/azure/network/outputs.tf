@@ -3,7 +3,7 @@
 ##################################################
 
 output "resource_group_name" {
-    value = azurerm_resource_group.this.name
+  value = azurerm_resource_group.this.name
 }
 
 ###################################################
@@ -11,11 +11,11 @@ output "resource_group_name" {
 ###################################################
 
 output "vnet_id" {
-    value = azurerm_virtual_network.this.id
+  value = azurerm_virtual_network.this.id
 }
 
 output "vnet_name" {
-    value = azurerm_virtual_network.this.name
+  value = azurerm_virtual_network.this.name
 }
 
 ###################################################
@@ -23,14 +23,33 @@ output "vnet_name" {
 ###################################################
 
 output "aks_subnet_id" {
-    value = azurerm_subnet.aks.id
+  value = azurerm_subnet.aks.id
 }
 
 output "shared_subnet_id" {
-    value = azurerm_subnet.shared.id
+  value = azurerm_subnet.shared.id
 }
 
-output "bastion_subnet_id {
-    value = azurerm_subnet.bastion.id
+#output "bastion_subnet_id" {
+#  value = azurerm_subnet.bastion.id
+#}
+
+###################################################
+# NSG's
+####################################################
+
+output "aks_nsg_id" {
+  value = azurerm_network_security_group.aks.id
 }
 
+output "shared_nsg_id" {
+  value = azurerm_network_security_group.shared.id
+}
+
+#output "bastion_nsg_id" {
+#  value = azurerm_network_security_group.bastion.id
+#}
+
+output "route_table_id" {
+  value = azurerm_route_table.this.id
+}
